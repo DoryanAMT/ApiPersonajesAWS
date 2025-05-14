@@ -27,5 +27,20 @@ namespace ApiPersonajesAWS.Controllers
             await this.repo.CreatePersonajeAsync(personaje.Nombre, personaje.Imagen);
             return Ok();
         }
+        [HttpGet]
+        [Route("[action]/{id}")]
+        public async Task<ActionResult<Personaje>> FindPersonaje
+            (int id)
+        {
+            return await this.repo.FindPersonajeAsync(id);
+        }
+        [HttpPut]
+        [Route("[action]")]
+        public async Task<ActionResult> UpdatePersonaje
+            (Personaje personaje)
+        {
+            await this.repo.UpdatePersonajeAsync(personaje.IdPersonaje, personaje.Nombre, personaje.Imagen);
+            return Ok();
+        }
     }
 }
